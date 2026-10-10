@@ -32,6 +32,8 @@ Les rapports sont écrits dans `reports/` :
 | `conformite.json` | Pour un tableau de bord ou un outil de suivi |
 | `evals-identite.json` | Chaque question posée au modèle, sa réponse et le verdict |
 
+Le rapport technique de Playwright existe aussi pour chaque exécution : `npm run rapport:conforme` après `npm test`, et `npm run rapport:non-conforme` après `npm run test:detection`.
+
 Pour voir la démo dans un navigateur : `npm run demo`, puis http://localhost:4173. La variante défectueuse se lance avec `npm run demo:non-conforme`.
 
 ## Ce qui est testé

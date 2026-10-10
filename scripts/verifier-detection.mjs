@@ -12,7 +12,7 @@ const env = { ...process.env, DEMO_VARIANT: 'non-conforme', RAPPORT_DIR: DOSSIER
 delete env.BASE_URL;
 
 console.log('Lancement de la suite sur la variante non conforme. Des tests rouges sont attendus.\n');
-spawnSync(process.execPath, [path.join('node_modules', '@playwright', 'test', 'cli.js'), 'test', '--reporter=dot,./reporters/conformite-reporter.ts'], { stdio: 'inherit', env });
+spawnSync(process.execPath, [path.join('node_modules', '@playwright', 'test', 'cli.js'), 'test'], { stdio: 'inherit', env });
 
 const rapport = JSON.parse(readFileSync(path.join(DOSSIER, 'conformite.json'), 'utf8'));
 const statuts = Object.fromEntries(rapport.exigences.map((e) => [e.id, e.statut]));
@@ -33,3 +33,4 @@ if (manques > 0) {
   process.exit(1);
 }
 console.log(`\nLes ${ATTENDUS.length} défauts injectés sont détectés. Rapport : ${path.join(DOSSIER, 'conformite.html')}`);
+console.log('Rapport Playwright détaillé de cette exécution : npm run rapport:non-conforme');

@@ -8,6 +8,8 @@
     "demo:non-conforme": "node demo/server.mjs --non-conforme",
     "test": "playwright test",
     "test:detection": "node scripts/verifier-detection.mjs",
+    "rapport:conforme": "playwright show-report playwright-report",
+    "rapport:non-conforme": "playwright show-report playwright-report-non-conforme --port 9324",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
