@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr" data-variant="{{VARIANT}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banque Démo · Actualités</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <strong>Banque Démo</strong>
+    <nav><a href="/">Assistant</a></nav>
+  </header>
+  <main class="article">
+    <article data-testid="article" id="article">
+      <h1>Ce qui change pour les virements instantanés</h1>
+      <!-- Art. 50 §4 : un texte généré par IA et publié pour informer le public est signalé comme tel. -->
+      <p id="label-ia" data-testid="ai-label" class="label-ia" hidden>Texte généré par une IA</p>
+      <p>Les virements instantanés sont désormais proposés au même prix que les virements classiques. Le bénéficiaire reçoit les fonds en quelques secondes, tous les jours de l'année.</p>
+      <p>Avant de valider, votre banque vérifie que le nom du bénéficiaire correspond bien à l'IBAN saisi et vous alerte en cas d'écart.</p>
+    </article>
+  </main>
+  <script>
+    (function () {
+      // Variante non conforme : aucun label, aucun marquage.
+      if (document.documentElement.getAttribute('data-variant') !== 'conforme') return;
+      document.getElementById('label-ia').hidden = false;
+      var article = document.getElementById('article');
+      article.setAttribute('data-ai-generated', 'true');
+      article.setAttribute('data-digital-source-type', 'http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia');
+    })();
+  </script>
+</body>
+</html>

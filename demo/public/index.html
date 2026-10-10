@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr" data-variant="{{VARIANT}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banque Démo · Assistant</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <strong>Banque Démo</strong>
+    <nav>
+      <a href="/?lang=fr" data-testid="lang-fr">FR</a>
+      <a href="/?lang=en" data-testid="lang-en">EN</a>
+      <a href="/actualites">Actualités</a>
+    </nav>
+  </header>
+
+  <main class="chat">
+    <h1 id="titre">Assistant</h1>
+
+    <!-- Art. 50 §1 et §5 : mention claire, distincte, présente dès le chargement, annoncée aux lecteurs d'écran. -->
+    <p id="ai-notice" data-testid="ai-notice" role="status" class="notice" hidden></p>
+
+    <ol id="messages" data-testid="messages" class="messages" aria-live="polite"></ol>
+
+    <form id="form" class="saisie" autocomplete="off">
+      <label for="champ" id="label-champ">Votre message</label>
+      <div class="ligne">
+        <input id="champ" data-testid="chat-input" name="message" type="text" required>
+        <button id="envoyer" data-testid="chat-send" type="submit">Envoyer</button>
+      </div>
+    </form>
+
+    <div class="actions">
+      <button id="humain" data-testid="handoff" type="button">Parler à un humain</button>
+      <span id="mode" data-testid="mode" class="mode">Mode : assistant IA</span>
+    </div>
+  </main>
+
+  <footer class="pied">
+    <a href="#" id="cgu">Conditions générales</a>
+    <span id="notice-cgu" class="petit" hidden></span>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

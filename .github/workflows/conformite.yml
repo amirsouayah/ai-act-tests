@@ -1,0 +1,44 @@
+name: Tests AI Act
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  conformite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      - name: Vérification des types
+        run: npm run typecheck
+
+      - name: Suite de conformité
+        run: npm test
+
+      - name: Les tests détectent les défauts injectés
+        run: npm run test:detection
+
+      - name: Rapport par article dans le résumé du job
+        if: always()
+        run: |
+          if [ -f reports/conformite.md ]; then cat reports/conformite.md >> "$GITHUB_STEP_SUMMARY"; fi
+
+      - name: Publier les rapports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapports-ai-act
+          path: |
+            reports/
+            playwright-report/
+          retention-days: 30
